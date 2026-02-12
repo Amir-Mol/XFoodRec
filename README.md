@@ -10,22 +10,14 @@ We introduce a novel A/B Testing Framework to rigorously measure the impact of t
 
 ## Repository Structure
 XFoodRec/
-├── data/
-
-│   ├── input/          # Contains the source recipe dataset (recipes.parquet)
-
-│   └── output/         # Generated personas, recommendations, and evaluation results
-
-├── src/
-
-│   ├── generate_personas.py  # Step 1: Creates synthetic user profiles
-
-│   ├── recommender.py        # Step 2: Hybrid Retrieval + LLM Reranking & Explanation
-
-│   ├── create_ab_test.py     # Step 3: Randomly removes explanations for the Control Group
-
-│   └── evaluator.py          # Step 4: Automated scoring using Google Gemini
-
+├── data/  
+│   ├── input/          # Contains the source recipe dataset (recipes.parquet)  
+│   └── output/         # Generated personas, recommendations, and evaluation results  
+├── src/  
+│   ├── generate_personas.py  # Step 1: Creates synthetic user profiles  
+│   ├── recommender.py        # Step 2: Hybrid Retrieval + LLM Reranking & Explanation  
+│   ├── create_ab_test.py     # Step 3: Randomly removes explanations for the Control Group  
+│   └── evaluator.py          # Step 4: Automated scoring using Google Gemini  
 └── requirements.txt    # Python dependencies
 
 
@@ -36,12 +28,12 @@ Our system follows a four-stage pipeline designed to ensure scientific rigor and
 ### 1. Synthetic Persona Generation
 We used LLM (GPT-5.2) generate diverse and realistic user personas.
 
-**System Prompt:**
+**System Prompt:**  
     You are a User Research Specialist for a food AI application.
     Generate realistic user profiles (personas) that represent extreme and 
     diverse edge cases in dietary needs.
 
-**User Prompt:** 
+**User Prompt:**  
     Create {n} distinct user profiles for a food recommendation app.
     
     CRITICAL INSTRUCTIONS:
