@@ -9,16 +9,23 @@ We introduce a novel A/B Testing Framework to rigorously measure the impact of t
 
 
 ## Repository Structure
-XFoodRec/\n
+XFoodRec/
 ├── data/
 
 │   ├── input/          # Contains the source recipe dataset (recipes.parquet)
+
 │   └── output/         # Generated personas, recommendations, and evaluation results
+
 ├── src/
+
 │   ├── generate_personas.py  # Step 1: Creates synthetic user profiles
+
 │   ├── recommender.py        # Step 2: Hybrid Retrieval + LLM Reranking & Explanation
+
 │   ├── create_ab_test.py     # Step 3: Randomly removes explanations for the Control Group
+
 │   └── evaluator.py          # Step 4: Automated scoring using Google Gemini
+
 └── requirements.txt    # Python dependencies
 
 
