@@ -1,16 +1,17 @@
 # XFoodRec: A Hybrid Explainable Food Recommendation Framework
 
-**Related Project:** This repository contains the algorithm and evaluation framework for a NutriRecom Mobile Application which can be found here [https://github.com/Amir-Mol/ai-food-frontend]:
+**Related Project:** This repository contains the algorithm and evaluation framework for NutriRecom Mobile Application which can be found here [https://github.com/Amir-Mol/ai-food-frontend]:
 
 ## Overview
-In this project, we address the challenge of **Explainability** in food recommender systems. Unlike traditional "black-box" recommenders that simply output a list of items, XFoodRec generates **personalized, natural language explanations** alongside every recommendation.
+In this project, we address the challenge of **Explainability** in food recommender systems. Unlike traditional "black-box" recommenders that simply output a list of items, XFoodRec generates personalized, natural language explanations alongside every recommendation.
 
-We introduce a novel **A/B Testing Framework** to rigorously measure the impact of these explanations on user trust and persuasiveness. To avoid the high cost and bias of traditional evaluation, we utilize a **Synthetic Persona Generation** pipeline and an **Automated LLM Judge** acting as a scientific reviewer.
+We introduce a novel A/B Testing Framework to rigorously measure the impact of these explanations on user trust and persuasiveness. To avoid the high cost and bias of traditional evaluation, we utilize a Synthetic Persona Generation pipeline and an Automated LLM Judge acting as a scientific reviewer.
 
 
-## 📂 Repository Structure
-XFoodRec/
+## Repository Structure
+XFoodRec/\n
 ├── data/
+
 │   ├── input/          # Contains the source recipe dataset (recipes.parquet)
 │   └── output/         # Generated personas, recommendations, and evaluation results
 ├── src/
@@ -174,7 +175,7 @@ Output strictly valid JSON with these keys:
 
 ### 1. Setup Environment
 ```bash
-git clone [https://github.com/Amir-Mol/XFoodRec.git](https://github.com/Amir-Mol/XFoodRec.git)
+git clone https://github.com/Amir-Mol/XFoodRec.git
 cd XFoodRec
 python -m venv xfood_env
 # Windows
