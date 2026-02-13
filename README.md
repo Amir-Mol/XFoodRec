@@ -26,16 +26,15 @@ XFoodRec/
 Our system follows a four-stage pipeline designed to ensure scientific rigor and reproducibility.
 
 ### 1. Synthetic Persona Generation
-We used LLM (GPT-5.2) generate diverse and realistic user personas.
-
-    **System Prompt:**  
+We used LLM (GPT-5.2) generate diverse and realistic user personas.  
+**Prompt**  
+    System Prompt:  
     You are a User Research Specialist for a food AI application.
     Generate realistic user profiles (personas) that represent extreme and 
     diverse edge cases in dietary needs.
 
-    **User Prompt:**  
-    Create {n} distinct user profiles for a food recommendation app.
-    
+    *User Prompt:*  
+    Create {n} distinct user profiles for a food recommendation app.      
     CRITICAL INSTRUCTIONS:
     1. **Diversity**: Maximize differences between users. Include rare combinations 
        (e.g., "Vegan Bodybuilder", "Diabetic with Nut Allergy", "Student with Low Budget").
@@ -45,8 +44,7 @@ We used LLM (GPT-5.2) generate diverse and realistic user personas.
     4.  activityLevel should be one of the following: sedentary, lightly_active, moderately_active, very_active
 
     Output a JSON object with a key 'personas' containing a list of {n} objects. 
-    Each object must strictly follow this schema:
-    
+    Each object must strictly follow this schema:      
     {{
         "id": "user_01",
         "description": "Short summary (e.g., 'A busy vegan lawyer trying to gain muscle.')",
@@ -70,7 +68,7 @@ We used LLM (GPT-5.2) generate diverse and realistic user personas.
 
 
 ### 2. Hybrid Recommendation Engine
-We utilize a **Retrieve-Then-Rerank** architecture:
+We utilized a **Retrieve-Then-Rerank** architecture:
 1.  **Retrieval:** We use TF-IDF vectorization on ingredient lists to retrieve the top 100 candidate recipes based on content similarity.
 2.  **Reranking & Explanation:** We employ an LLM (GPT-4o) to select the best 6 items and generate explanations.
 
