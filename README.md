@@ -28,6 +28,8 @@ Our system follows a four-stage pipeline designed to ensure scientific rigor and
 ### 1. Synthetic Persona Generation
 We used LLM (GPT-5.2) generate diverse and realistic user personas.  
 **Prompt**  
+
+
     System Prompt:  
     You are a User Research Specialist for a food AI application.
     Generate realistic user profiles (personas) that represent extreme and 
