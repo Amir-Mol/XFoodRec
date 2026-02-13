@@ -26,9 +26,7 @@ XFoodRec/
 Our system follows a four-stage pipeline designed to ensure scientific rigor and reproducibility.
 
 ### 1. Synthetic Persona Generation
-We used LLM (GPT-5.2) generate diverse and realistic user personas.  
-**Prompt**  
-
+We used LLM (GPT-5.2) to generate diverse and realistic user personas, With this prompt:
 
     System Prompt:  
     You are a User Research Specialist for a food AI application.
@@ -71,10 +69,10 @@ We used LLM (GPT-5.2) generate diverse and realistic user personas.
 
 ### 2. Hybrid Recommendation Engine
 We utilized a **Retrieve-Then-Rerank** architecture:
-1.  **Retrieval:** We use TF-IDF vectorization on ingredient lists to retrieve the top 100 candidate recipes based on content similarity.
-2.  **Reranking & Explanation:** We employ an LLM (GPT-4o) to select the best 6 items and generate explanations.
+1.  **Retrieval:** We used TF-IDF vectorization on ingredient lists to retrieve the top 100 candidate recipes based on content similarity.
+2.  **Reranking & Explanation:** We employed an LLM (GPT-4o) to select the best 6 items and generate explanations. With the following prompt:
 
-**System Prompt:**
+    System Prompt:
     "You are an AI-powered food recommendation assistant. "
     "You will receive a list of candidate recipes that has already been filtered by a hard-constraint "
     "('Never List') module to remove items that violate the user's dietary restrictions and allergies.\n\n"
@@ -105,72 +103,81 @@ We utilized a **Retrieve-Then-Rerank** architecture:
     "Output strictly valid JSON in this format:\n"
     "{ 'recommendations': [ { 'recipe_id': '...', 'explanation': '...' } ] }"
 
-**User Prompt:**
+    User Prompt:
     User Profile      
     List of Candidates REcipes
 
 
 ### 3. A/B Testing (Ablation Study)
-To measure the true impact of the AI explanations, we implement a **Within-Subjects Design**:
-* **Group B (Treatment):** Users see the recommendation **with** the AI explanation.
-* **Group A (Control):** Users see the exact same recommendation, but the explanation is **removed**.
+To measure the true impact of the AI explanations, we implement a Within-Subjects Design:
+* **Group B (Treatment):** Users see the recommendation with the AI explanation.
+* **Group A (Control):** Users see the exact same recommendation, but the explanation is removed.
 * **Implementation:** The script `src/create_ab_test.py` randomly masks 50% of the explanations before evaluation.
 
 
 ### 4. Automated Evaluation (The "LLM Judge")
-To avoid self-preference bias (using GPT to evaluate GPT), we utilize **Google Gemini 2.5 Flash** as an impartial scientific reviewer.
+To avoid self-preference bias (using GPT to evaluate GPT), we utilize **Google Gemini 2.5 Flash** with two different roles: 1. An impartial scientific reviewer, 2. A Nutritionist. The following prompt is for the scientific reviewer role:
 
-**Prompt:**
-
-SYSTEM ROLE:
-You are an impartial Scientific Reviewer specializing in Recommender Systems and Explainable AI.
-Your job is to audit the quality of a food recommendation and its explanation using defined metrics.
-Do not assume any information beyond what is provided.
-
-TASK:
-Please evaluate the following food recommendation against the User Profile.
-
---- USER PROFILE ---
-Description
-Goal
-Dietary Constraints
-Liked Ingredients
-Disliked Ingredients
-Favorite Cuisines
---------------------
-
---- RECOMMENDATION ---
-Item
-Nutrition
-Ingredients
-
-Explanation Provided
-----------------------
-
-Score the following 3 metrics on a scale of 1 (Poor) to 5 (Excellent).
-
-1. RELEVANCE (1-5):
-   Is the meal appropriate and relevant for the user's specific goals and constraints? 
-
-2. TRANSPARENCY (1-5):
-   It aims to evaluate whether the explanations can reveal the internal working principles of the recommender models.
-
-3. PERSUASIVENESS (1-5):
-   It aims to evaluate “whether the explanations can increase the interaction probability of the users on the items.
-
-Note: Some recommendations may not have an explanation.
-
-Output strictly valid JSON with these keys:
-    {{
-    "relevance_score": int,
-    "transparency_score": int,
-    "persuasiveness_score": int,
-    "reasoning": "Short justification (1-2 sentences)"
-    }}
+    Prompt:  
+    SYSTEM ROLE:
+    You are an impartial Scientific Reviewer specializing in Recommender Systems and Explainable AI.  
+    Your job is to audit the quality of a food recommendation and its explanation using defined metrics.  
+    Do not assume any information beyond what is provided.  
 
 
+    TASK:  
+    Please evaluate the following food recommendation against the User Profile.  
 
-## 🚀 Installation & Usage
+
+    USER PROFILE:  
+    Description  
+    Goal  
+    Dietary Constraints  
+    Liked Ingredients  
+    Disliked Ingredients  
+    Favorite Cuisines  
+      
+
+
+    RECOMMENDATION:  
+    Item  
+    Nutrition  
+    Ingredients  
+
+
+    Explanation   
+      
+
+
+    Score the following 3 metrics on a scale of 1 (Poor) to 5 (Excellent).
+
+
+    1. RELEVANCE (1-5):  
+    Is the meal appropriate and relevant for the user's specific goals and constraints? 
+
+
+    2. TRANSPARENCY (1-5):  
+    It aims to evaluate whether the explanations can reveal the internal working principles of the recommender models.
+
+
+    3. PERSUASIVENESS (1-5):  
+    It aims to evaluate “whether the explanations can increase the interaction probability of the users on the items.
+
+
+    Note: Some recommendations may not have an explanation.
+
+
+    Output strictly valid JSON with these keys:  
+        {{  
+        "relevance_score": int,  
+        "transparency_score": int,  
+        "persuasiveness_score": int,  
+        "reasoning": "Short justification (1-2 sentences)"  
+        }}  
+
+
+
+## Installation & Usage
 
 ### 1. Setup Environment
 ```bash
@@ -187,7 +194,7 @@ pip install -r requirements.txt
 
 ### 2. Configure API Keys
 The project requires API keys for OpenAI and Google Gemini.
-Rename the example file .env.example to .env
+Rename the example file .env.example to .env and put your API key there.
 
 
 ### 3. Run the Pipeline
