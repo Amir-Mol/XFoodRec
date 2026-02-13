@@ -33,7 +33,7 @@ We used LLM (GPT-5.2) to generate diverse and realistic user personas, With this
     Generate realistic user profiles (personas) that represent extreme and 
     diverse edge cases in dietary needs.
 
-    *User Prompt:*  
+    User Prompt:  
     Create {n} distinct user profiles for a food recommendation app.      
     CRITICAL INSTRUCTIONS:
     1. **Diversity**: Maximize differences between users. Include rare combinations 
@@ -71,6 +71,7 @@ We used LLM (GPT-5.2) to generate diverse and realistic user personas, With this
 We utilized a **Retrieve-Then-Rerank** architecture:
 1.  **Retrieval:** We used TF-IDF vectorization on ingredient lists to retrieve the top 100 candidate recipes based on content similarity.
 2.  **Reranking & Explanation:** We employed an LLM (GPT-4o) to select the best 6 items and generate explanations. With the following prompt:
+
 
     System Prompt:
     "You are an AI-powered food recommendation assistant. "
