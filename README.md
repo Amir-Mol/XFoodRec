@@ -72,7 +72,7 @@ We utilized a **Retrieve-Then-Rerank** architecture:
 1.  **Retrieval:** We used TF-IDF vectorization on ingredient lists to retrieve the top 100 candidate recipes based on content similarity.
 2.  **Reranking & Explanation:** We employed an LLM (GPT-4o) to select the best 6 items and generate explanations. With the following prompt:
 
-    {
+    
         System Prompt:
         You are an AI-powered food recommendation assistant. 
         You will receive a list of candidate recipes that has already been filtered by a hard-constraint 
@@ -107,7 +107,7 @@ We utilized a **Retrieve-Then-Rerank** architecture:
         User Prompt:
         User Profile      
         List of Candidates REcipes
-    }
+    
 
 ### 3. A/B Testing (Ablation Study)
 To measure the true impact of the AI explanations, we implement a Within-Subjects Design:
