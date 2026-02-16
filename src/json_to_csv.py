@@ -11,7 +11,8 @@ METADATA_FILE = Path("data/output/recommendations_ab.json")
 SCORE_FILES = [
     Path("data/output/evaluation_results_gemini_scientific.json"),
     Path("data/output/evaluation_results_gemini_nutritionist.json"),
-    # Path("data/output/evaluation_human_alice.json"), 
+    Path("data/output/evaluation_rs_expert.json"), 
+    Path("data/output/evaluation_nutritionist_.json")
 ]
 
 OUTPUT_CSV = Path("data/output/analysis_dataset.csv")

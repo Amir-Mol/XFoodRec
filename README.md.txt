@@ -177,13 +177,6 @@ To avoid self-preference bias (using GPT to evaluate GPT), we utilize **Google G
         }}  
 
 
-### 4. Human Evaluation Dashboard
-
-Alongside the automated evaluation, we provide a local, interactive web interface for human experts to blindly score the A/B test results.
-The json_to_html.py script parses the recommendation datasets and compiles them into a clean, searchable UI (human_evaluation_tool.html) where annotators can input scores that are saved directly for statistical analysis.
-
-![Human Evaluation Dashboard](data/assets/human_dashboard.jpg)
-
 
 ## Installation & Usage
 
